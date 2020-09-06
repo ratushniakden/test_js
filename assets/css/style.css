@@ -1,0 +1,13 @@
+.divTest {
+  font-size: 32px;
+  color: blueviolet;
+  padding: 20 px;
+  border: 1px solid red;
+}
+
+.divTest2 {
+  font-size: 24px;
+  color: black;
+  padding: 10 px;
+  border: 2px solid green;
+}
