@@ -4,58 +4,19 @@ const rootDiv = document.getElementById("root");
 
 rootDiv.classList.add("divTest");
 
-// rootDiv.addEventListener("click", () => {
-//   //   if (rootDiv.classList.contains("divTest")) {
-//   //     rootDiv.classList.replace("divTest", "divTest2");
-//   //   } else if (rootDiv.classList.contains("divTest2")) {
-//   //     rootDiv.classList.replace("divTest2", "divTest");
-//   //   }
-//   rootDiv.classList.toggle("divTest");
-//   rootDiv.classList.toggle("divTest2");
-// });
-
-//Task 1
-
-const newDiv = document.createElement("div");
 const form = document.createElement("form");
 const input = document.createElement("input");
-const submit = document.createElement("input");
-submit.setAttribute("type", "submit");
-const ul = document.createElement("ul");
-const li = document.createElement("li");
-const deleteButton = document.createElement("button");
-deleteButton.textContent = "delete";
+// do not allow digits
+const passwordRegex = new RegExp("(?=.*[0-9])");
 
-rootDiv.append(newDiv, form, ul);
+rootDiv.append(form);
 form.appendChild(input);
-form.appendChild(submit);
-ul.appendChild(li);
-li.appendChild(deleteButton);
 
 input.addEventListener("input", (event) => {
-  newDiv.textContent = event.target.value;
-});
-
-//Task 2
-
-submit.addEventListener("click", () => {
-  if (newDiv.textContent.split(" ").length > 3) {
-    console.log(newDiv.textContent);
+  let str = event.target.value;
+  if (str.search(passwordRegex)) {
+    rootDiv.setAttribute("class", "divTest2");
   } else {
-    console.error("Your input is less then 3 words!");
+    rootDiv.setAttribute("class", "divTest");
   }
 });
-
-//Task 3
-
-input.addEventListener("input", (event) => {
-  const test = newDiv.textContent.split(" ").filter(Boolean);
-});
-
-input.addEventListener("input", (event) => {
-  li.textContent = event.target.value;
-});
-
-deleteButton.onclick = function () {
-  deleteButton.parentElement.remove();
-};
