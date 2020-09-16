@@ -1,8 +1,7 @@
 "use strict";
 
 const rootDiv = document.getElementById("root");
-
-rootDiv.classList.add("divTest");
+rootDiv.classList.add("redBorder");
 
 const form = document.createElement("form");
 const input = document.createElement("input");
@@ -13,10 +12,13 @@ rootDiv.append(form);
 form.appendChild(input);
 
 input.addEventListener("input", (event) => {
-  let str = event.target.value;
-  if (str.search(passwordRegex)) {
-    rootDiv.setAttribute("class", "divTest2");
+  const {
+    target: { value },
+  } = event;
+
+  if (value.search(passwordRegex)) {
+    rootDiv.classList.add("greenBorder");
   } else {
-    rootDiv.setAttribute("class", "divTest");
+    rootDiv.classList.remove("greenBorder");
   }
 });
